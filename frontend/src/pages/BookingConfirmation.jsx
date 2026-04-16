@@ -84,27 +84,20 @@ export default function BookingConfirmation() {
       <Navbar />
       <div className="page-wrapper">
         <div className="container section">
-          {/* Success banner */}
           <div className="success-banner animate-scale-in">
             <div>
               <h1 className="success-title">Booking Confirmed</h1>
-              <p className="success-sub">
-                Your seats are reserved. Have a great journey.
-              </p>
+              <p className="success-sub">Your seats are reserved. Have a great journey.</p>
             </div>
           </div>
 
-          {/* Ticket */}
           <div className="ticket animate-fade-in">
-            {/* Ticket header */}
             <div className="ticket-header">
-                <div className="ticket-logo">BusSwift</div>
-                <div className="ticket-status badge badge-success">
-                  {booking.status}
+              <div className="ticket-logo">BusSwift</div>
+              <div className="ticket-status badge badge-success">{booking.status}</div>
             </div>
             </div>
 
-            {/* Booking ID */}
             <div className="ticket-booking-id">
               <span className="ticket-label">Booking ID</span>
               <span className="ticket-id">{booking.bookingId}</span>
@@ -112,7 +105,6 @@ export default function BookingConfirmation() {
 
             <hr className="divider" />
 
-            {/* Route */}
             <div className="ticket-route">
               <div className="ticket-city">
                 <span className="city-name">{bus?.from}</span>
@@ -130,7 +122,6 @@ export default function BookingConfirmation() {
 
             <hr className="divider" />
 
-            {/* Details grid */}
             <div className="ticket-details">
               <div className="ticket-detail-item">
                 <span className="ticket-label">Bus</span>
@@ -152,7 +143,6 @@ export default function BookingConfirmation() {
 
             <hr className="divider" />
 
-            {/* Seats + Price */}
             <div className="ticket-seats-price">
               <div className="ticket-seats-block">
                 <span className="ticket-label">Seat Numbers</span>
@@ -168,7 +158,6 @@ export default function BookingConfirmation() {
               </div>
             </div>
 
-            {/* Ticket perforated bottom */}
             <div className="ticket-perforation">
               <div className="perf-circle left" />
               <div className="perf-line" />
@@ -180,20 +169,11 @@ export default function BookingConfirmation() {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="confirmation-actions animate-fade-in">
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={() => navigate("/my-bookings")}
-              id="view-all-bookings-btn"
-            >
+            <button className="btn btn-primary btn-lg" onClick={() => navigate("/my-bookings")} id="view-all-bookings-btn">
               View All Bookings
             </button>
-            <button
-              className="btn btn-ghost btn-lg"
-              onClick={() => navigate("/search")}
-              id="book-another-btn"
-            >
+            <button className="btn btn-ghost btn-lg" onClick={() => navigate("/search")} id="book-another-btn">
               Book Another
             </button>
           </div>
