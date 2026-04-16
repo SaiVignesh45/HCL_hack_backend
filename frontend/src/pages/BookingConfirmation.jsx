@@ -70,10 +70,7 @@ export default function BookingConfirmation() {
   if (!booking) return null;
 
   const bus = booking.busDetails;
-  const bookedAt = new Date(booking.bookedAt).toLocaleString("en-IN", {
-    day: "numeric", month: "short", year: "numeric",
-    hour: "2-digit", minute: "2-digit",
-  });
+  const bookedAt = new Date(booking.bookedAt).toLocaleString();
 
   const travelDate = new Date(booking.date).toLocaleDateString("en-IN", {
     weekday: "long", day: "numeric", month: "long", year: "numeric",
@@ -109,35 +106,35 @@ export default function BookingConfirmation() {
               <span className="ticket-id">{booking.bookingId}</span>
             </div>
 
-            <hr className="divider" />
+            <div className="divider"></div>
 
             {/* Route */}
             <div className="ticket-route">
               <div className="ticket-city">
-                <span className="city-name">{bus?.from}</span>
-                <span className="city-time">{bus?.departure}</span>
+                <span className="city-name">{bus.from}</span>
+                <span className="city-time">{bus.departure}</span>
               </div>
               <div className="ticket-route-mid">
                 <div className="ticket-line" />
-                <span className="ticket-duration">{bus?.duration}</span>
+                <span className="ticket-duration">{bus.duration}</span>
               </div>
               <div className="ticket-city right">
-                <span className="city-name">{bus?.to}</span>
-                <span className="city-time">{bus?.arrival}</span>
+                <span className="city-name">{bus.to}</span>
+                <span className="city-time">{bus.arrival}</span>
               </div>
             </div>
 
-            <hr className="divider" />
+            <div className="divider"></div>
 
             {/* Details grid */}
             <div className="ticket-details">
               <div className="ticket-detail-item">
                 <span className="ticket-label">Bus</span>
-                <span className="ticket-value">{bus?.name}</span>
+                <span className="ticket-value">{bus.name}</span>
               </div>
               <div className="ticket-detail-item">
                 <span className="ticket-label">Type</span>
-                <span className="ticket-value">{bus?.type}</span>
+                <span className="ticket-value">{bus.type}</span>
               </div>
               <div className="ticket-detail-item">
                 <span className="ticket-label">Travel Date</span>
@@ -149,21 +146,21 @@ export default function BookingConfirmation() {
               </div>
             </div>
 
-            <hr className="divider" />
+            <div className="divider"></div>
 
             {/* Seats + Price */}
             <div className="ticket-seats-price">
               <div className="ticket-seats-block">
                 <span className="ticket-label">Seat Numbers</span>
                 <div className="ticket-seats-list">
-                  {booking.seatNumbers?.map((sn) => (
+                  {booking.seatNumbers && booking.seatNumbers.map((sn) => (
                     <span key={sn} className="selected-seat-tag">{sn}</span>
                   ))}
                 </div>
               </div>
               <div className="ticket-price-block">
                 <span className="ticket-label">Total Paid</span>
-                <span className="ticket-total">₹{booking.totalPrice?.toLocaleString()}</span>
+                <span className="ticket-total">Rs {booking.totalPrice || ''}</span>
               </div>
             </div>
 

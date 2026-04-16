@@ -1,57 +1,46 @@
-import { LOCAL_STORAGE_KEYS } from "../utils/constants";
-
-const getBookingsFromStorage = () => {
-  const data = localStorage.getItem(LOCAL_STORAGE_KEYS.BOOKINGS);
-  return data ? JSON.parse(data) : [];
-};
-
-const saveBookingsToStorage = (bookings) => {
-  localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKINGS, JSON.stringify(bookings));
-};
+import { apiGet, apiPost, apiPut } from "./api";
+import { busService } from "./busService";
 
 export const bookingService = {
-  createBooking: async ({ busId, busDetails, seatIds, seatNumbers, totalPrice, date, userId }) => {
-    await new Promise((res) => setTimeout(res, 1000));
-
-    const booking = {
-      bookingId: `BK${Date.now()}`,
-      busId,
-      busDetails,
-      seatIds,
-      seatNumbers,
-      totalPrice,
-      date,
-      userId,
-      status: "CONFIRMED",
-      bookedAt: new Date().toISOString(),
-    };
-
-    const bookings = getBookingsFromStorage();
-    bookings.unshift(booking); // Latest first
-    saveBookingsToStorage(bookings);
-
-    return booking;
+  createBooking: async ({ busId, seatIds }) => {
+    return await apiPost("/bookings", { busId, seatIds });
   },
 
-  getMyBookings: async (userId) => {
-    await new Promise((res) => setTimeout(res, 400));
-    const bookings = getBookingsFromStorage();
-    return bookings.filter((b) => b.userId === userId);
+  getMyBookings: async () => {
+    // Fetch raw database rows from Spring Boot
+    const rawBookings = await apiGet("/me/bookings");
+
+    // Loop through them and hydrate the data for the UI
+    const mappedBookings = await Promise.all(
+      rawBookings.map(async (raw) => {
+        // Fetch the rich bus details so the frontend can read the name, time, etc.
+        const busDetails = await busService.getBusById(raw.busId);
+        
+        // Let's get the seat map so we know if seatId '4' is "1D" or "2A"
+        const allSeats = await busService.getBusSeats(raw.busId);
+        const seatObj = allSeats.find(s => s.seat_id === raw.seatId);
+
+        return {
+          bookingId: raw.bookingId,
+          busDetails: busDetails, 
+          date: busDetails.date,             
+          seatNumbers: [seatObj ? seatObj.seat_number : raw.seatId], 
+          totalPrice: busDetails.price,      
+          status: raw.status
+        };
+      })
+    );
+
+    return mappedBookings;
   },
 
   cancelBooking: async (bookingId) => {
-    await new Promise((res) => setTimeout(res, 600));
-    const bookings = getBookingsFromStorage();
-    const updated = bookings.map((b) =>
-      b.bookingId === bookingId ? { ...b, status: "CANCELLED" } : b
-    );
-    saveBookingsToStorage(updated);
-    return { success: true };
+    return await apiPut(`/bookings/${bookingId}/cancel`);
   },
 
   getBookingById: async (bookingId) => {
-    await new Promise((res) => setTimeout(res, 300));
-    const bookings = getBookingsFromStorage();
-    return bookings.find((b) => b.bookingId === bookingId) || null;
+    // Instead of raw mapped, use the mapped output itself natively 
+    const mappedBookings = await bookingService.getMyBookings();
+    return mappedBookings.find(b => parseInt(b.bookingId) === parseInt(bookingId)) || null;
   },
 };

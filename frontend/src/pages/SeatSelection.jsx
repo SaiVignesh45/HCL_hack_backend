@@ -38,7 +38,7 @@ export default function SeatSelection() {
       }
     };
     load();
-  }, [busId]);
+  }, [busId, bus]);
 
   const handleSeatClick = (seat) => {
     if (seat.status === SEAT_STATUS.BOOKED) return;

@@ -42,7 +42,7 @@ export default function Search() {
         date: form.date,
       });
       navigate("/buses", { state: { buses, searchParams: form } });
-    } catch (err) {
+    } catch {
       setError("Search failed. Please try again.");
     } finally {
       setLoading(false);
