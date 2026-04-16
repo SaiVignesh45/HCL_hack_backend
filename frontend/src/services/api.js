@@ -27,11 +27,25 @@ export const apiPost = async (endpoint, body) => {
   return response.json();
 };
 
+export const apiPut = async (endpoint, body) => {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    method: "PUT",
+    headers: getHeaders(),
+    body: body ? JSON.stringify(body) : null,
+  });
+  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  if (response.status === 204 || response.headers.get("content-length") === "0") return null;
+  const text = await response.text();
+  return text ? JSON.parse(text) : null;
+};
+
 export const apiDelete = async (endpoint) => {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     method: "DELETE",
     headers: getHeaders(),
   });
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-  return response.json();
+  if (response.status === 204 || response.headers.get("content-length") === "0") return null;
+  const text = await response.text();
+  return text ? JSON.parse(text) : null;
 };

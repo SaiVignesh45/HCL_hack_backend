@@ -102,6 +102,7 @@ export default function BookingConfirmation() {
                 <div className="ticket-status badge badge-success">
                   {booking.status}
             </div>
+            </div>
 
             {/* Booking ID */}
             <div className="ticket-booking-id">

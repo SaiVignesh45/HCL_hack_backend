@@ -1,57 +1,21 @@
-import { LOCAL_STORAGE_KEYS } from "../utils/constants";
-
-const getBookingsFromStorage = () => {
-  const data = localStorage.getItem(LOCAL_STORAGE_KEYS.BOOKINGS);
-  return data ? JSON.parse(data) : [];
-};
-
-const saveBookingsToStorage = (bookings) => {
-  localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKINGS, JSON.stringify(bookings));
-};
+import { apiGet, apiPost, apiPut } from "./api";
 
 export const bookingService = {
-  createBooking: async ({ busId, busDetails, seatIds, seatNumbers, totalPrice, date, userId }) => {
-    await new Promise((res) => setTimeout(res, 1000));
-
-    const booking = {
-      bookingId: `BK${Date.now()}`,
-      busId,
-      busDetails,
-      seatIds,
-      seatNumbers,
-      totalPrice,
-      date,
-      userId,
-      status: "CONFIRMED",
-      bookedAt: new Date().toISOString(),
-    };
-
-    const bookings = getBookingsFromStorage();
-    bookings.unshift(booking); // Latest first
-    saveBookingsToStorage(bookings);
-
-    return booking;
+  createBooking: async ({ busId, seatIds }) => {
+    return await apiPost("/bookings", { busId, seatIds });
   },
 
-  getMyBookings: async (userId) => {
-    await new Promise((res) => setTimeout(res, 400));
-    const bookings = getBookingsFromStorage();
-    return bookings.filter((b) => b.userId === userId);
+  getMyBookings: async () => {
+    return await apiGet("/me/bookings");
   },
 
   cancelBooking: async (bookingId) => {
-    await new Promise((res) => setTimeout(res, 600));
-    const bookings = getBookingsFromStorage();
-    const updated = bookings.map((b) =>
-      b.bookingId === bookingId ? { ...b, status: "CANCELLED" } : b
-    );
-    saveBookingsToStorage(updated);
-    return { success: true };
+    return await apiPut(`/bookings/${bookingId}/cancel`);
   },
 
   getBookingById: async (bookingId) => {
-    await new Promise((res) => setTimeout(res, 300));
-    const bookings = getBookingsFromStorage();
-    return bookings.find((b) => b.bookingId === bookingId) || null;
+    // If your backend introduces /bookings/{id}, use it. Otherwise, filter locally:
+    const bookings = await apiGet("/me/bookings");
+    return bookings.find(b => parseInt(b.bookingId) === parseInt(bookingId)) || null;
   },
 };
