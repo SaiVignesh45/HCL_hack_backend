@@ -178,7 +178,6 @@ export default function BookingConfirmation() {
             </button>
           </div>
         </div>
-      </div>
     </>
   );
 }

@@ -63,4 +63,21 @@ public class BookingService {
                         b.getSeat().getSeatId(), b.getStatus(), b.getBookingTime()))
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void cancelBooking(Integer bookingId) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+        
+        if (booking.getStatus() == Booking.BookingStatus.CANCELLED) {
+            return;
+        }
+
+        booking.setStatus(Booking.BookingStatus.CANCELLED);
+        bookingRepository.save(booking);
+
+        Seat seat = booking.getSeat();
+        seat.setStatus(Seat.SeatStatus.AVAILABLE);
+        seatRepository.save(seat);
+    }
 }

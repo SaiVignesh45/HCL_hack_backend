@@ -37,7 +37,8 @@ public class BookingController {
     
     @PutMapping("/bookings/{bookingId}/cancel")
     public ResponseEntity<Void> cancelBooking(@PathVariable Integer bookingId) {
-        return ResponseEntity.ok().build(); // Add cancel logic to service layer later
+        bookingService.cancelBooking(bookingId);
+        return ResponseEntity.ok().build();
     }
 
     private Integer getUserId(Authentication authentication) {
