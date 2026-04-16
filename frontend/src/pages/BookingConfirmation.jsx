@@ -86,13 +86,10 @@ export default function BookingConfirmation() {
         <div className="container section">
           {/* Success banner */}
           <div className="success-banner animate-scale-in">
-            <div className="success-icon-ring">
-              <span className="success-icon">✓</span>
-            </div>
             <div>
-              <h1 className="success-title">Booking Confirmed!</h1>
+              <h1 className="success-title">Booking Confirmed</h1>
               <p className="success-sub">
-                Your seats are reserved. Have a great journey! 🎉
+                Your seats are reserved. Have a great journey.
               </p>
             </div>
           </div>
@@ -101,10 +98,9 @@ export default function BookingConfirmation() {
           <div className="ticket animate-fade-in">
             {/* Ticket header */}
             <div className="ticket-header">
-              <div className="ticket-logo">🚌 BusSwift</div>
-              <div className="ticket-status badge badge-success">
-                ✅ {booking.status}
-              </div>
+                <div className="ticket-logo">BusSwift</div>
+                <div className="ticket-status badge badge-success">
+                  {booking.status}
             </div>
 
             {/* Booking ID */}
@@ -122,7 +118,6 @@ export default function BookingConfirmation() {
                 <span className="city-time">{bus?.departure}</span>
               </div>
               <div className="ticket-route-mid">
-                <div className="ticket-bus-icon">🚌</div>
                 <div className="ticket-line" />
                 <span className="ticket-duration">{bus?.duration}</span>
               </div>
@@ -180,7 +175,7 @@ export default function BookingConfirmation() {
             </div>
 
             <div className="ticket-footer">
-              <span>🎫 Show this ticket at the boarding point</span>
+              <span>Show this ticket at the boarding point</span>
             </div>
           </div>
 
@@ -191,14 +186,14 @@ export default function BookingConfirmation() {
               onClick={() => navigate("/my-bookings")}
               id="view-all-bookings-btn"
             >
-              🎟️ View All Bookings
+              View All Bookings
             </button>
             <button
               className="btn btn-ghost btn-lg"
               onClick={() => navigate("/search")}
               id="book-another-btn"
             >
-              🔍 Book Another
+              Book Another
             </button>
           </div>
         </div>

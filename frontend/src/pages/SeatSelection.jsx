@@ -180,7 +180,7 @@ export default function SeatSelection() {
 
                 {/* Booking summary */}
                 <div className="booking-summary animate-fade-in">
-                  <h3>🎟️ Booking Summary</h3>
+                  <h3>Booking Summary</h3>
 
                   {selectedSeats.length === 0 ? (
                     <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", textAlign: "center", padding: "1rem 0" }}>

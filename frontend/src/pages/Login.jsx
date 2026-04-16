@@ -53,7 +53,7 @@ export default function Login() {
       <div className="auth-card animate-scale-in">
         {/* Header */}
         <div className="auth-header">
-          <div className="auth-logo">🚌</div>
+          <div className="auth-logo"></div>
           <h1 className="auth-title">Welcome back</h1>
           <p className="auth-subtitle">Sign in to continue booking your journeys</p>
         </div>

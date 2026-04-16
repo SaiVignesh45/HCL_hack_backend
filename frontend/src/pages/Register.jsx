@@ -47,7 +47,7 @@ export default function Register() {
 
       <div className="auth-card animate-scale-in">
         <div className="auth-header">
-          <div className="auth-logo">🚌</div>
+          <div className="auth-logo"></div>
           <h1 className="auth-title">Create account</h1>
           <p className="auth-subtitle">Join BusSwift and start booking in seconds</p>
         </div>
