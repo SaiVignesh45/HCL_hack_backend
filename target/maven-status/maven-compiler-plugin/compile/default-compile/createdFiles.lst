@@ -15,6 +15,7 @@ com\busbooking\repository\SeatRepository.class
 com\busbooking\dto\BookingDto.class
 com\busbooking\entity\User.class
 com\busbooking\repository\UserRepository.class
+com\busbooking\config\OpenApiConfig.class
 com\busbooking\exception\GlobalExceptionHandler.class
 com\busbooking\dto\AuthDto$RegisterRequest.class
 com\busbooking\dto\BookingDto$BookingResponse.class

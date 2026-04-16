@@ -19,6 +19,7 @@ D:\claude-test\src\main\java\com\busbooking\service\SeatService.java
 D:\claude-test\src\main\java\com\busbooking\controller\BusController.java
 D:\claude-test\src\main\java\com\busbooking\controller\SeatController.java
 D:\claude-test\src\main\java\com\busbooking\repository\BusRepository.java
+D:\claude-test\src\main\java\com\busbooking\config\OpenApiConfig.java
 D:\claude-test\src\main\java\com\busbooking\dto\AuthDto.java
 D:\claude-test\src\main\java\com\busbooking\dto\SeatDto.java
 D:\claude-test\src\main\java\com\busbooking\repository\UserRepository.java
