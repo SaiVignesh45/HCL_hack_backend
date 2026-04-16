@@ -15,20 +15,20 @@
   --success: hsl(140, 70%, 45%);
 
   /* Backgrounds */
-  --bg-base: hsl(225, 28%, 7%);
-  --bg-surface: hsl(225, 22%, 11%);
-  --bg-card: hsl(225, 20%, 14%);
-  --bg-card-hover: hsl(225, 20%, 17%);
-  --bg-glass: hsla(225, 22%, 15%, 0.7);
-  --bg-glass-strong: hsla(225, 22%, 10%, 0.85);
+  --bg-base: hsl(210, 24%, 98%);
+  --bg-surface: hsl(210, 20%, 98%);
+  --bg-card: hsl(0, 0%, 100%);
+  --bg-card-hover: hsl(210, 18%, 95%);
+  --bg-glass: hsla(0, 0%, 100%, 0.7);
+  --bg-glass-strong: hsla(0, 0%, 100%, 0.92);
 
   /* Text */
-  --text-primary: hsl(220, 20%, 94%);
-  --text-secondary: hsl(220, 10%, 65%);
-  --text-muted: hsl(220, 10%, 45%);
+  --text-primary: hsl(210, 12%, 15%);
+  --text-secondary: hsl(210, 14%, 42%);
+  --text-muted: hsl(210, 16%, 55%);
 
   /* Borders */
-  --border: hsla(220, 20%, 30%, 0.5);
+  --border: hsla(210, 12%, 70%, 0.65);
   --border-active: hsla(224, 91%, 60%, 0.5);
 
   /* Shadows */
@@ -78,8 +78,8 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 10%, hsla(224, 91%, 25%, 0.25) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, hsla(165, 80%, 20%, 0.15) 0%, transparent 50%);
+    radial-gradient(ellipse at 10% 10%, hsla(40, 100%, 90%, 0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 80%, hsla(210, 95%, 92%, 0.35) 0%, transparent 45%);
   pointer-events: none;
   z-index: 0;
 }

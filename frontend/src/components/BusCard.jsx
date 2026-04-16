@@ -3,15 +3,15 @@ import "../styles/global.css";
 import "./BusCard.css";
 
 const TYPE_LABELS = {
-  AC: { label: "AC", icon: "❄️" },
-  NON_AC: { label: "Non-AC", icon: "🌬️" },
-  SLEEPER: { label: "Sleeper", icon: "🛏️" },
-  SEMI_SLEEPER: { label: "Semi-Sleeper", icon: "💺" },
+  AC: { label: "AC" },
+  NON_AC: { label: "Non-AC" },
+  SLEEPER: { label: "Sleeper" },
+  SEMI_SLEEPER: { label: "Semi-Sleeper" },
 };
 
 export default function BusCard({ bus }) {
   const navigate = useNavigate();
-  const typeInfo = TYPE_LABELS[bus.type] || { label: bus.type, icon: "🚌" };
+  const typeInfo = TYPE_LABELS[bus.type] || { label: bus.type };
   const availPct = (bus.availableSeats / bus.totalSeats) * 100;
   const availColor =
     availPct > 50 ? "var(--success)" : availPct > 20 ? "var(--warning)" : "var(--danger)";
@@ -25,13 +25,10 @@ export default function BusCard({ bus }) {
       {/* Top strip */}
       <div className="bus-card-header">
         <div className="bus-card-name">
-          <span className="bus-type-badge">
-            {typeInfo.icon} {typeInfo.label}
-          </span>
+          <span className="bus-type-badge">{typeInfo.label}</span>
           <h3>{bus.name}</h3>
         </div>
         <div className="bus-card-rating">
-          <span className="star">⭐</span>
           <span>{bus.rating?.toFixed(1)}</span>
         </div>
       </div>

@@ -61,7 +61,7 @@ export default function Search() {
         <div className="search-hero">
           <div className="container">
             <div className="hero-text animate-fade-in">
-              <div className="hero-eyebrow">🚌 India&apos;s Smartest Bus Booking</div>
+              <div className="hero-eyebrow">India&apos;s Smartest Bus Booking</div>
               <h1 className="hero-title">
                 Where are you<br />
                 <span className="hero-gradient">headed today?</span>
@@ -80,18 +80,15 @@ export default function Search() {
               <div className="search-fields">
                 <div className="input-group search-field">
                   <label className="input-label" htmlFor="search-source">From</label>
-                  <div className="input-icon-wrap">
-                    <span className="field-icon">📍</span>
-                    <input
-                      id="search-source"
-                      name="source"
-                      className="input input-with-icon"
-                      placeholder="e.g. Mumbai"
-                      value={form.source}
-                      onChange={handleChange}
-                      autoComplete="off"
-                    />
-                  </div>
+                  <input
+                    id="search-source"
+                    name="source"
+                    className="input"
+                    placeholder="e.g. Mumbai"
+                    value={form.source}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
                 </div>
 
                 <button
@@ -112,34 +109,28 @@ export default function Search() {
 
                 <div className="input-group search-field">
                   <label className="input-label" htmlFor="search-destination">To</label>
-                  <div className="input-icon-wrap">
-                    <span className="field-icon">🏁</span>
-                    <input
-                      id="search-destination"
-                      name="destination"
-                      className="input input-with-icon"
-                      placeholder="e.g. Pune"
-                      value={form.destination}
-                      onChange={handleChange}
-                      autoComplete="off"
-                    />
-                  </div>
+                  <input
+                    id="search-destination"
+                    name="destination"
+                    className="input"
+                    placeholder="e.g. Pune"
+                    value={form.destination}
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
                 </div>
 
                 <div className="input-group search-field">
                   <label className="input-label" htmlFor="search-date">Travel Date</label>
-                  <div className="input-icon-wrap">
-                    <span className="field-icon">📅</span>
-                    <input
-                      id="search-date"
-                      name="date"
-                      type="date"
-                      className="input input-with-icon"
-                      value={form.date}
-                      min={today}
-                      onChange={handleChange}
-                    />
-                  </div>
+                  <input
+                    id="search-date"
+                    name="date"
+                    type="date"
+                    className="input"
+                    value={form.date}
+                    min={today}
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <button
@@ -148,7 +139,7 @@ export default function Search() {
                   disabled={loading}
                   id="search-submit"
                 >
-                  {loading ? "Searching…" : "🔍 Search Buses"}
+                  {loading ? "Searching…" : "Search Buses"}
                 </button>
               </div>
 
@@ -157,7 +148,7 @@ export default function Search() {
 
             {/* Popular Routes */}
             <div className="popular-routes animate-fade-in">
-              <p className="popular-label">✨ Popular Routes</p>
+              <p className="popular-label">Popular Routes</p>
               <div className="routes-grid">
                 {POPULAR_ROUTES.map((r) => (
                   <button
@@ -179,13 +170,12 @@ export default function Search() {
         {/* Features Section */}
         <div className="features-section container">
           {[
-            { icon: "⚡", title: "Instant Booking", desc: "Reserve your seat in under 30 seconds with real-time availability." },
-            { icon: "💺", title: "Choose Your Seat", desc: "Interactive seat map lets you pick exactly where you want to sit." },
-            { icon: "🎟️", title: "Easy Cancellation", desc: "Plans changed? Cancel your booking hassle-free from My Bookings." },
-            { icon: "🔒", title: "Secure Payments", desc: "Your payment info is fully encrypted and never stored." },
+            { title: "Instant Booking", desc: "Reserve your seat in under 30 seconds with real-time availability." },
+            { title: "Choose Your Seat", desc: "Interactive seat map lets you pick exactly where you want to sit." },
+            { title: "Easy Cancellation", desc: "Plans changed? Cancel your booking hassle-free from My Bookings." },
+            { title: "Secure Payments", desc: "Your payment info is fully encrypted and never stored." },
           ].map((f) => (
             <div key={f.title} className="feature-card card">
-              <span className="feature-icon">{f.icon}</span>
               <h3 className="feature-title">{f.title}</h3>
               <p className="feature-desc">{f.desc}</p>
             </div>

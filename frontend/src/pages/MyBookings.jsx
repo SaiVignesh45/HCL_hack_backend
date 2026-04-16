@@ -83,7 +83,6 @@ export default function MyBookings() {
             <Loader text="Fetching your bookings…" />
           ) : bookings.length === 0 ? (
             <div className="empty-state animate-fade-in">
-              <div className="empty-state-icon">🎟️</div>
               <h3>No bookings yet</h3>
               <p>Your booking history will appear here once you book a trip.</p>
               <button
@@ -118,7 +117,7 @@ export default function MyBookings() {
                         <span className="booking-id">{booking.bookingId}</span>
                       </div>
                       <span className={`badge ${isCancelled ? "badge-danger" : "badge-success"}`}>
-                        {isCancelled ? "❌ Cancelled" : "✅ Confirmed"}
+                        {isCancelled ? "Cancelled" : "Confirmed"}
                       </span>
                     </div>
 
@@ -147,19 +146,19 @@ export default function MyBookings() {
                     {/* Meta info */}
                     <div className="booking-meta">
                       <div className="meta-item">
-                        <span className="meta-label">🚌 Bus</span>
+                        <span className="meta-label">Bus</span>
                         <span className="meta-value">{bus?.name}</span>
                       </div>
                       <div className="meta-item">
-                        <span className="meta-label">📅 Date</span>
+                        <span className="meta-label">Date</span>
                         <span className="meta-value">{travelDate}</span>
                       </div>
                       <div className="meta-item">
-                        <span className="meta-label">💺 Seats</span>
+                        <span className="meta-label">Seats</span>
                         <span className="meta-value">{booking.seatNumbers?.join(", ")}</span>
                       </div>
                       <div className="meta-item">
-                        <span className="meta-label">💳 Paid</span>
+                        <span className="meta-label">Paid</span>
                         <span className="meta-value" style={{ color: "var(--accent)", fontWeight: "700" }}>
                           ₹{booking.totalPrice?.toLocaleString()}
                         </span>
@@ -173,7 +172,7 @@ export default function MyBookings() {
                         onClick={() => handleViewTicket(booking)}
                         id={`view-ticket-${booking.bookingId}`}
                       >
-                        🎫 View Ticket
+                        View Ticket
                       </button>
                       {!isCancelled && (
                         <button

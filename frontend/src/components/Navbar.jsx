@@ -19,28 +19,25 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-inner container">
-        {/* Logo */}
         <Link to={isLoggedIn ? "/search" : "/"} className="navbar-logo">
-          <span className="logo-icon">🚌</span>
           <span className="logo-text">
             Bus<span className="logo-accent">Swift</span>
           </span>
         </Link>
 
-        {/* Links */}
         {isLoggedIn && (
           <div className="navbar-links">
             <Link
               to="/search"
               className={`nav-link ${isActive("/search") ? "active" : ""}`}
             >
-              🔍 Search
+              Search
             </Link>
             <Link
               to="/my-bookings"
               className={`nav-link ${isActive("/my-bookings") ? "active" : ""}`}
             >
-              🎟️ My Bookings
+              My Bookings
             </Link>
           </div>
         )}

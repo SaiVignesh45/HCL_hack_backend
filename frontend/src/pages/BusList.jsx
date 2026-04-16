@@ -29,7 +29,7 @@ export default function BusList() {
                 <span>{params.destination}</span>
                 {params.date && (
                   <span className="buslist-date">
-                    📅 {new Date(params.date).toLocaleDateString("en-IN", {
+                    {new Date(params.date).toLocaleDateString("en-IN", {
                       day: "numeric", month: "short", year: "numeric",
                     })}
                   </span>
@@ -52,7 +52,6 @@ export default function BusList() {
 
           {buses.length === 0 ? (
             <div className="empty-state animate-fade-in">
-              <div className="empty-state-icon">🚌</div>
               <h3>No buses found</h3>
               <p>Try different cities or dates to find available buses.</p>
               <button
